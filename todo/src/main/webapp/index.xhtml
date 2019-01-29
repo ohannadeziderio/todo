@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="resource/css/bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
+	<title>Tarefa</title>
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
+			<h1>ToDo</h1>
+			<hr />
+			<p:dataTable id="tarefas" value="#{tarefaController.tarefas}"
+				var="tarefa" styleClass="table_tarefa" resetValues="true"
+				editable="true" editMode="cell" widgetVar="cellTarefas">
+				<f:facet name="header">Tarefas</f:facet>
+
+				<p:ajax event="cellEdit" listener="#{tarefsController.onCellEdit}" update=":form:msgs" />
+
+				<p:column headerText="Título">
+					<p:cellEditor>
+	                   <f:facet name="output"><h:outputText value="#{tarefa.titulo}" /></f:facet>
+	                   <f:facet name="input"><p:inputText id="modelInput" value="#{tarefa.titulo}" style="width:96%"/></f:facet>
+	               </p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Status">#{tarefa.ativa}</p:column>
+				<p:column style="width:60px">
+					<p:commandButton
+						action="#{tarefaController.deletarTarefa(tarefa.id)}"
+						icon="ui-icon ui-icon-trash" title="Deletar" />
+				</p:column>
+			</p:dataTable>
+			<p:contextMenu for="tarefas" widgetVar="cMenu">
+				<p:menuitem value="Editar" icon="pi pi-search"
+					onclick="PF('cellTarefas').showCellEditor();return false;" />
+				<p:menuitem value="Hide Menu" icon="pi pi-times"
+					onclick="PF('cMenu').hide()" />
+			</p:contextMenu>
+		</h:form>
+		<br>
+		<h:form>
+			<h1>Cadastrar Tarefa</h1>
+			<hr />
+			<div class="form-group row">
+				<label class="col-sm-2">Título:</label>
+				<div class="col-sm-10">
+					<p:inputText type="text" class="form-control" placeholder="Título"
+						value="#{tarefaController.tarefa.titulo}" required="true"></p:inputText>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<p:commandButton value="Cadastrar" type="submit"
+						class="btn btn-primary"
+						action="#{tarefaController.cadastrarTarefa}"></p:commandButton>
+				</div>
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>

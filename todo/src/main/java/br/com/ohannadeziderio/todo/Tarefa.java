@@ -3,6 +3,8 @@
  */
 package br.com.ohannadeziderio.todo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,24 +14,24 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Tarefa {
+public class Tarefa implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String titulo;
 	private boolean ativa;
 	
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
