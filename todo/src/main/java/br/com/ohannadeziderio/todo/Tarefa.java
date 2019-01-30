@@ -22,6 +22,19 @@ public class Tarefa implements Serializable {
 	private String titulo;
 	private boolean ativa;
 	
+	public Tarefa() {
+		
+	}
+	
+	/**
+	 * @param titulo
+	 * @param ativa
+	 */
+	public Tarefa(String titulo, boolean ativa) {
+		super();
+		this.titulo = titulo;
+		this.ativa = ativa;
+	}
 	/**
 	 * @return the id
 	 */

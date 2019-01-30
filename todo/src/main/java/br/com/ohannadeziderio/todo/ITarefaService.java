@@ -23,5 +23,7 @@ public interface ITarefaService {
 	boolean deletarTarefa(int id);
 	
 	Tarefa findById(int id);
+	
+	Tarefa findByTitulo(String titulo);
 
 }

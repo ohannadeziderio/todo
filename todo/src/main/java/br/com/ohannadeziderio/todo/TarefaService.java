@@ -41,7 +41,14 @@ public class TarefaService implements ITarefaService {
 
 	@Transactional
 	public void atualizarTarefa(Tarefa tarefa) {
-		tarefaRepository.save(tarefa);
+		Tarefa tarefaCadastrada = tarefaRepository.findById(tarefa.getId()).orElse(null);
+		
+		if(tarefaCadastrada != null) {
+			tarefaCadastrada.setTitulo(tarefa.getTitulo());
+			tarefaCadastrada.setAtiva(tarefa.isAtiva());
+			
+			tarefaRepository.save(tarefa);
+		}
 	}
 
 	@Transactional
@@ -60,6 +67,13 @@ public class TarefaService implements ITarefaService {
 	@Transactional
 	public Tarefa findById(int id) {
 		Tarefa tarefa = tarefaRepository.findById(id).orElse(null);
+		
+		return tarefa;
+	}
+	
+	@Transactional
+	public Tarefa findByTitulo(String titulo) {
+		Tarefa tarefa = (Tarefa) tarefaRepository.findByTitulo(titulo);
 		
 		return tarefa;
 	}

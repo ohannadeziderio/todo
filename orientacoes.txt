@@ -1,0 +1,13 @@
+Orientações sobre o projeto
+
+No presente projeto, foram implementados os itens obrigatórios A e B, além dos itens C, D, E, F, G e H.
+
+No desenvolvimento, foram utilizados os frameworks e ferramentas a seguir:
+- Spring Boot 2.1.2
+- Elementos do Bootstrap 4
+- Componentes do Primefaces
+- PostgreSQL 9.6
+- JUnit
+
+Para a execução do projeto, é necessária a criação de um banco de dados com os dados de acesso presentes no 
+application.properties ou a alteração dessas informações de acordo com o banco local. A aplicação roda na porta 8080.
