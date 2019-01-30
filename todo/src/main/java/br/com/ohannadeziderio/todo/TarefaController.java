@@ -33,7 +33,11 @@ public class TarefaController implements Serializable {
 	private ITarefaService tarefaService;
 	private List<Tarefa> tarefas = new ArrayList<Tarefa>();
 	private Tarefa tarefa = new Tarefa();
-
+	
+	/**
+	 * Método responsável pelo cadastro de tarefa
+	 * @return
+	 */
 	public String cadastrarTarefa() {
 		tarefa.setAtiva(true);
 		boolean cadastrou = tarefaService.cadastrarTarefa(tarefa);
@@ -46,26 +50,16 @@ public class TarefaController implements Serializable {
 		return "index.xhtml?faces-redirect=true";
 	}
 
-	/*
-	 * public void atualizarTarefa(@RequestBody String titulo, CellEditEvent event)
-	 * { Object oldValue = event.getOldValue(); Object newValue =
-	 * event.getNewValue();
-	 * 
-	 * if(newValue != null && !newValue.equals(oldValue)) {
-	 * System.out.println("AQUI DE NOVO"); FacesMessage msg = new
-	 * FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue +
-	 * ", New:" + newValue); FacesContext.getCurrentInstance().addMessage(null,
-	 * msg);
-	 * 
-	 * 
-	 * } }
-	 */
-
 	public String deletarTarefa(@PathVariable("id") Integer id) {
 		tarefaService.deletarTarefa(id);
 		return "index.xhtml?faces-redirect=true";
 	}
 	
+	/**
+	 * Método responsável pela conclusão de tarefas
+	 * @param id
+	 * @return
+	 */
 	public String concluirTarefa(int id) {
 		Tarefa tarefa = tarefaService.findById(id);
 		
@@ -90,7 +84,7 @@ public class TarefaController implements Serializable {
     }
     
     /**
-     * 
+     * Método para edição de título
      * @param titulo
      * @param event
      * @return

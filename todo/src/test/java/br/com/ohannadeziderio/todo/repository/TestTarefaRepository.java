@@ -26,7 +26,10 @@ import junit.framework.TestCase;
 public class TestTarefaRepository extends TestCase {
 	@Autowired
 	private TarefaRepository tarefaRepository;
-
+	
+	/**
+	 * Teste para cadastro
+	 */
 	@Test
 	public void testSalvar() {
 		Tarefa tarefa = new Tarefa("Teste", true);
@@ -34,6 +37,9 @@ public class TestTarefaRepository extends TestCase {
 		Assert.assertNotNull(tarefa.getId());
 	}
 	
+	/**
+	 * Teste para remoção
+	 */
 	@Test
 	public void testApagar() {
 		Tarefa tarefa = new Tarefa("Teste", true);
