@@ -33,7 +33,8 @@ public class TestTarefaRepository extends TestCase {
 		tarefaRepository.save(tarefa);
 		Assert.assertNotNull(tarefa.getId());
 	}
-
+	
+	@Test
 	public void testApagar() {
 		Tarefa tarefa = new Tarefa("Teste", true);
 		tarefaRepository.save(tarefa);
